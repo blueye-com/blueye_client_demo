@@ -67,3 +67,50 @@ bool init(HANDLE _shutdown_event, std::string _str_token);
 //std::string _str_token, 用户身份 ID，是一个 40 位的字符串密钥。
 ```
 # 1. 实时行情订阅接口 API
+## CBlueyeQuote::subscribe_ 
+
+参数：std::string _str_subscribing ，格式为交易所代码（2 位，'HS'代表上海，'ZS'代表深圳） +品种代码（6 位），多个品种之间使用逗号隔开。 例如 “HS600000,HS600035,ZS000001,ZS300125”。  
+
+说明：A, 根据此接口订阅指定的数据，最大支持 100 个品种。如果需要定制全市场推送，则 需要通过特定的 token 账号来申请。 B,如果取消订阅，则发送一个不存在的字符，例如“BSDFSDF”。 C,收到的推送数据会通过回调函数 blueye_call_back 发送到上层。
+
+# 2. K 线数据点播下载
+## CBlueyeQuote::request_kline_ 
+
+参数：byte _exchange ，交易所代码,0-深圳，1-上海。  
+char* _symbol 品种代码。  
+int _kline_type,K 线类型, 0-1 分钟，7-日 K 线。  
+int _offset,起始位置偏移量。   
+int _count,请求数量。  
+
+返回：true,发送成功，false 失败。  
+
+说明：  
+A, 收到数据会系统会调用 K 线回调函数 blueye_kline_call_back 将数据传入，用户通 过修改回调函数体处理数据。  
+B, 目前支持支持日内 1 分钟和日 K 两类数据的下载，其余数据可以调用 FIX 接口通过 文件方式下载，或者通过 1 分钟和日 K 数据在本地合成其他格式的数据。  
+
+# 3. 明细数据点播下载
+## CBlueyeQuote::request_tick_
+
+参数：byte _exchange ，交易所代码,0-深圳，1-上海。  
+char* _symbol 品种代码。   
+int _count, 请求数量。  
+
+返回：true,发送成功，false 失败。  
+
+说明：  
+A, 收到数据会系统会调用 K 线回调函数 blueye_tick_call_back 将数据传入，用户通 过修改回调函数体处理数据。   
+B, 如果一个品种的请求数据条数大于最大限制条数（1024），则会以多包的形式返回 数据。最后通过时间序号进行排序合并。   
+
+# 4. 排行榜数据下载
+## CBlueyeQuote::request_top_list_
+
+参数： _exchange - 交易所,  
+_type - 排行类别,  
+_offset - 请求起始偏移量（0 开始）,  
+_count - 请求记录条数。   
+
+返回：true,发送成功，false 失败。  
+
+说明：  
+A, 收到数据会系统会调用 K 线回调函数 blueye_call_back 将数据传入，用户通过修改 回调函数体处理数据。   
+B, 如果一个品种的请求数据条数大于最大限制条数（1024），则会以多包的形式返回 数据。
