@@ -4,7 +4,7 @@
 另外一种是基于文件方式的方式下载，支持大文件下载，传输使用 FIX 的扩展文件协议， 典型的数据类型包括：除权数据、财务数据、资金数据、K 线数据（大于 512 条，按品种、 按日期下载）、交易明细（大于 1024 条，按品种、按日期下载）。服务程序名称为 fix_tengin。    
 行情接口 API 的库名称分别为 blueye_client.dll（32 位）和 blueye_client64.dll（64 位），以及 blueye_fix_api.dll（32 位）。    
 使用类 CBlueyeQuote 对 blueye_client.dll 或者 blueye_client64.dll 进行封装。    
-使用 data_fix 类 blueye_fix_api.dll 进行封装。
+使用 data_fix 类 blueye_fix_api.dll 进行封装。  
 ps: 程序运行在32位环境下，blueye_client32.dll默认为DEBUG，release已压缩为blueye_client32.zip存放于默认路径下
 # 1.请求类型定义
 ```cpp
