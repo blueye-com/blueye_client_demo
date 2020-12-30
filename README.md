@@ -338,7 +338,44 @@ void request_tick_data(CBlueyeQuote *_p_blueye_quote, byte _exchange, char *_sym
 说明：  
 A, 收到数据会系统会调用K线回调函数blueye_call_back将数据传入，用户通过修改回调函数体处理数据。
 B, 如果一个品种的请求数据条数大于最大限制条数（1024），则会以多包的形式返回数据。最后通过时间序号进行排序合并。
-# 8.CBlueyeQuote接口API  
+# 8.批量数据下载接口API
+```cpp
+void request_batch_data(CBlueyeQuote *_p_blueye_quote)
+{
+	ROM_QUOTE_HEAD _quote_head;
+	memset(&_quote_head, 0, sizeof(_quote_head));
+	_quote_head.reset(REQ_TYPE_QUOTE_BATCH_KLINE_DATA, "E7GH8ZH81E5T3Y6K86l0J3H6M9ML9JZH9HPH6B8H");
+	//_quote_head.exchange = _exchange;
+	//memcpy(_quote_head.symbol, _symbol, ROM_SYMBOL_LEN);
+	_quote_head.d1 = 0;
+	_quote_head.d2 = 200;
+	_quote_head.t1 = ROM_QUOTE_HEAD::P_DAILY;
+
+	std::vector<STRU_SYMBOL> _symbols;
+	STRU_SYMBOL _symbol;
+	_symbol.nExchange = SHA;
+	strcpy(_symbol.symbol, "600000");
+	_symbols.push_back(_symbol);
+	strcpy(_symbol.symbol, "600036");
+	_symbols.push_back(_symbol);
+
+	_symbol.nExchange = SHA;
+	strcpy(_symbol.symbol, "600050");
+	_symbols.push_back(_symbol);
+
+	_symbol.nExchange = SZN;
+	strcpy(_symbol.symbol, "002236");
+	_symbols.push_back(_symbol);
+	std::string _str_symbols_list = _p_blueye_quote->pack_batch_request_symbols(_symbols);
+
+	if(_str_symbols_list != "")
+		_p_blueye_quote->send_batch_business(&_quote_head, _str_symbols_list);
+}
+```
+说明：  
+A, 通过调用CBlueyeQuote类提供的send_batch_business接口实现行情数据请求的批量发送。  
+B, 行情头的reset函数可设置请求的行情数据类型及token密钥，通过设置行情头的t1变量可获取不同的分时数据。  
+# 9.CBlueyeQuote接口API  
 //日志回调函数  
 ```cpp
 	static void log(std::string _str_log);  
