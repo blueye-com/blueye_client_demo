@@ -343,11 +343,13 @@ B, 如果一个品种的请求数据条数大于最大限制条数（1024），�
 	static void log(std::string _str_log);  
 ```
 可对该函数进行修改，用于保存相关日志信息  
+
 //配置函数  
 ```cpp
 	void read_config_from_file();  
 ```
 从ini文件中读取相关的配置信息，如版本号、订阅信息、ip、端口等，并将其保存于config_param_中  
+
 //该函数负责切换窗口句柄，并清除行情队列   
 ```cpp
 	void switch_window(HWND _h_wnd);    
