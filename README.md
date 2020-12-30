@@ -339,14 +339,24 @@ A, 收到数据会系统会调用K线回调函数blueye_call_back将数据传入
 B, 如果一个品种的请求数据条数大于最大限制条数（1024），则会以多包的形式返回数据。最后通过时间序号进行排序合并。
 # 8.CBlueyeQuote接口API  
 //日志回调函数  
+```cpp
 	static void log(std::string _str_log);  
+```
 可对该函数进行修改，用于保存相关日志信息  
 //配置函数  
+```cpp
 	void read_config_from_file();  
+```
 从ini文件中读取相关的配置信息，如版本号、订阅信息、ip、端口等，并将其保存于config_param_中  
 //该函数负责切换窗口句柄，并清除行情队列   
+```cpp
 	void switch_window(HWND _h_wnd);    
+```
  //该函数负责对实时行情订阅请求进行打包处理    
+```cpp
 	void pack_subscribe(std::vector<STRU_SYMBOL> &_symbols);  
+```
 //将行情信息送入发送队列    
+```cpp
 	void send_business(ROM_QUOTE_HEAD *_p_quote_head);  
+```
