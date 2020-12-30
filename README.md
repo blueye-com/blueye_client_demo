@@ -5,6 +5,7 @@
 行情接口 API 的库名称分别为 blueye_client.dll（32 位）和 blueye_client64.dll（64 位），以及 blueye_fix_api.dll（32 位）。    
 使用类 CBlueyeQuote 对 blueye_client.dll 或者 blueye_client64.dll 进行封装。    
 使用 data_fix 类 blueye_fix_api.dll 进行封装。
+ps: 程序运行在32位环境下，blueye_client32.dll默认为DEBUG，release已压缩为blueye_client32.zip存放于默认路径下
 # 1.请求类型定义
 ```cpp
 #define		REQ_TYPE_QUOTE_BROADCAST			10		//请求全量数据广播(只针对有权限的账户)
