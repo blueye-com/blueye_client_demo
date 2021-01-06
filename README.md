@@ -6,6 +6,8 @@
 使用类 CBlueyeQuote 对 blueye_client.dll 或者 blueye_client64.dll 进行封装。    
 使用 data_fix 类 blueye_fix_api.dll 进行封装。  
 ps: 程序运行在32位环境下，blueye_client32.dll默认为DEBUG，release已压缩为blueye_client32.zip存放于默认路径下
+该工程需安装boost库至D盘下，并在工程中设置库目录
+boost安装教程https://blog.csdn.net/u010117867/article/details/83118831
 # 1.请求类型定义
 ```cpp
 #define		REQ_TYPE_QUOTE_BROADCAST			10		//请求全量数据广播(只针对有权限的账户)
