@@ -402,3 +402,19 @@ B, 行情头的reset函数可设置请求的行情数据类型及token密钥，�
 ```cpp
 	void send_business(ROM_QUOTE_HEAD *_p_quote_head);  
 ```
+# 10.分钟数据转换接口API
+//根据股票代码和数据类型自动生成目录
+```cpp
+GeneryMinuteKlinePath(sFilePath, _str_temp, _blueye_data->quote_head_.exchange, KLINE_TYPE_MINUTE5_DATA, ROM_SYMBOL_TYPE_BLOCK);
+```
+//数据转换接口
+```cpp
+GenerateManyMinutlyKLine(sFilePath, _kline, _rec_count, _translated_kline, _max_rec_count, KLINE_TYPE_MINUTE5_DATA, ROM_SYMBOL_TYPE_BLOCK);
+```
+sFlePath:生成路径  
+_kline:原数据  
+_rec_count:记录条数  
+_translated_kline:生成数据  
+_max_rec_count:最大记录条数  
+KLINE_TYPE_MINUTE5_DATA:生成数据类型  
+ROM_SYMBOL_TYPE_BLOCK:市场类型(股票、现货、期货)  
