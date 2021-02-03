@@ -177,10 +177,10 @@ int main()
 			Sleep(1000);
 		}
 	
-		subscribe_live_quote(&blueye_quote_);
+		//subscribe_live_quote(&blueye_quote_);
 		request_1m_data(&blueye_quote_, SHA, (char *)"600036");
-		request_daily_data(&blueye_quote_, SHA, (char *)"600200");
-		request_tick_data(&blueye_quote_, SHA, (char *)"600036");
+		//request_daily_data(&blueye_quote_, SHA, (char *)"600200");
+		//request_tick_data(&blueye_quote_, SHA, (char *)"600036");
 		//request_batch_data(&blueye_quote_); //批量下载股票
 		while (1)
 		{
