@@ -14,6 +14,65 @@
 
 extern CString GetModuleFilePath(HMODULE hModule);
 
+
+BOOL CreateMultiDir(TCHAR* szPathDir)
+{
+	TCHAR szPath[MAX_PATH] = { 0 };
+	TCHAR szbuf[MAX_PATH] = { 0 };
+	BOOL bFlag = FALSE;
+
+	_tcscpy(szPath, szPathDir);
+	int nLen = _tcslen(szPath);
+	if (nLen <= 3)
+		return FALSE;
+	if (szPath[nLen - 1] != _T('\\'))
+	{
+		_tcscat(szPath, _T("\\"));
+		szPath[nLen + 1] = _T('\0');
+		nLen++;
+	}
+	for (int i = 0; i < nLen; i++)
+	{
+		if (szPath[i] == _T('\\'))
+		{
+			if (bFlag == TRUE)
+			{
+				if (!PathFileExists(szbuf))
+				{
+					if (!CreateDirectory(szbuf, NULL))
+						return FALSE;
+				}
+			}
+			szbuf[i] = szPath[i];
+			bFlag = TRUE;
+		}
+		else
+		{
+			szbuf[i] = szPath[i];
+		}
+	}
+	return TRUE;
+}
+
+// 核查目录，若目录不存在，创建目录
+bool FindOrCreateDirectory(const char* pszPath)
+{
+	WIN32_FIND_DATA fd;
+	HANDLE hFind = ::FindFirstFile(pszPath, &fd);
+	while (hFind != INVALID_HANDLE_VALUE)
+	{
+		if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+		return true;
+	}
+	if (!CreateMultiDir((char*)pszPath))
+	{
+		std::cout << pszPath << std::endl;
+		std::cout << "创建目录失败，请检查权限！" << std::endl;
+		return false;
+	}
+	return true;
+}
+
 blueye_ipfs::blueye_ipfs()
 {
 	char strPath[MAX_PATH];
@@ -446,6 +505,7 @@ void blueye_ipfs::write_box_data_p1m(CALL_BACK_DATA *_blueye_data, int rec_count
 		_downloadpath = box_file_root_path_ + "szn\\min\\";
 	else
 		return;
+	FindOrCreateDirectory(_downloadpath.c_str());
 
 	std::string _filename;
 	char _str_temp[SYMBOL_LEN + 1] = {0};
@@ -471,6 +531,7 @@ void blueye_ipfs::write_box_data_daily(CALL_BACK_DATA *_blueye_data, int rec_cou
 		_downloadpath = box_file_root_path_ + "szn\\k\\";
 	else
 		return;
+	FindOrCreateDirectory(_downloadpath.c_str());
 
 	std::string _filename;
 	char _str_temp[SYMBOL_LEN + 1] = {0};

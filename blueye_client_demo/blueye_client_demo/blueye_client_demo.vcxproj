@@ -170,7 +170,9 @@
     <ClCompile Include="blueye_ipfs.cpp" />
     <ClCompile Include="CBlueyeQuote.cpp" />
     <ClCompile Include="CBlueyeQuoteFile.cpp" />
+    <ClCompile Include="DataExchange.cpp" />
     <ClCompile Include="data_fix.cpp" />
+    <ClCompile Include="ManyMinutesDataConversion.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="ZipData.cpp" />
   </ItemGroup>
@@ -180,7 +182,9 @@
     <ClInclude Include="blueye_ipfs.h" />
     <ClInclude Include="CBlueyeQuote.h" />
     <ClInclude Include="CBlueyeQuoteFile.h" />
+    <ClInclude Include="DataExchange.h" />
     <ClInclude Include="data_fix.h" />
+    <ClInclude Include="ManyMinutesDataConversion.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="ZipData.h" />
   </ItemGroup>

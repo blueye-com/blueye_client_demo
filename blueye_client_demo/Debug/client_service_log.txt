@@ -1,0 +1,28 @@
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:  1968=FIX4.29=17435=50334=143=N49=blueye50=blueye52=20210205 10:18:756=security57=security116=blueye122=20210205 10:18:7422=w1m_data_by_symbol1600036.dat.zip423=w1m_data_by_symbol10=045
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:  1988=FIX4.29=17635=50334=143=N49=blueye50=blueye52=20210205 10:25:5156=security57=security116=blueye122=20210205 10:25:51422=w5m_data_by_symbol1600036.dat.zip423=w1m_data_by_symbol10=141
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:  1988=FIX4.29=17635=50334=143=N49=blueye50=blueye52=20210205 10:26:1956=security57=security116=blueye122=20210205 10:26:19422=w5m_data_by_symbol1600036.dat.zip423=w1m_data_by_symbol10=151
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:  1988=FIX4.29=17635=50334=143=N49=blueye50=blueye52=20210205 10:27:2156=security57=security116=blueye122=20210205 10:27:21422=w5m_data_by_symbol1600036.dat.zip423=w5m_data_by_symbol10=143
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:  2008=FIX4.29=17835=50334=143=N49=blueye50=blueye52=20210205 10:31:2356=security57=security116=blueye122=20210205 10:31:23422=w10m_data_by_symbol1600036.dat.zip423=w10m_data_by_symbol10=227
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:  2008=FIX4.29=17835=50334=143=N49=blueye50=blueye52=20210205 10:32:3456=security57=security116=blueye122=20210205 10:32:34422=w15m_data_by_symbol1600036.dat.zip423=w15m_data_by_symbol10=243
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:  2008=FIX4.29=17835=50334=143=N49=blueye50=blueye52=20210205 10:34:4056=security57=security116=blueye122=20210205 10:34:40422=w60m_data_by_symbol1600036.dat.zip423=w60m_data_by_symbol10=241
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:  1988=FIX4.29=17635=50334=143=N49=blueye50=blueye52=20210205 15:47:456=security57=security116=blueye122=20210205 15:47:4422=w60m_data_by_symbol1600036.dat.zip423=w60m_data_by_symbol10=161
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:119.23.219.55:6001,io_service_thread exit
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:  1968=FIX4.29=17435=50334=143=N49=blueye50=blueye52=20210205 16:8:4456=security57=security116=blueye122=20210205 16:8:44422=w1m_data_by_symbol1600036.dat.zip423=w1m_data_by_symbol10=057
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:119.23.219.55:6001,io_service_thread exit
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:119.23.219.55:6001,io_service_thread started
+Thread[100]:  1988=FIX4.29=17635=50334=143=N49=blueye50=blueye52=20210205 17:32:4456=security57=security116=blueye122=20210205 17:32:44422=w1m_data_by_symbol1600036.dat.zip423=w1m_data_by_symbol10=151

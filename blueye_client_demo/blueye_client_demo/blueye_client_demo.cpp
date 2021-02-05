@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <string>
 #include "CBlueyeQuote.h"
 #include "data_fix.h"
 #include "CBlueyeQuoteFile.h"
@@ -13,25 +14,11 @@ extern blueye_ipfs g_algo_blueye_ipfs_;
 
 #define SYMBOL_LEN 6
 
-void TestDownloadData()
+void request_fix_data(int fix_thread_id, byte _exchange, std::string _symbol,std::string data_type)
 {
-	char _root_file[128] = {};
-	char _str_ip[128] = "119.23.219.55",_str_port[128] = "6001";
-	_getcwd(_root_file, MAX_PATH);
-	/*strcat(_root_file, "\\blueye_algo.ini");
-	GetPrivateProfileString("daily_tasks", "data_fix_ip", "fix3.blueye.info", _str_ip, sizeof(_str_ip), _root_file);
-	GetPrivateProfileString("daily_tasks", "data_fix_port", "6001", _str_port, sizeof(_str_port), _root_file);*/
-	int _thread_id = p_this_instance_->start_fix(_str_ip, _str_port, NULL,NULL);
-	if (_thread_id > 0)
-	{
-		while (!g_algo_data_fix_.is_login(_thread_id))
-		{
-			Sleep(1000);
-		}
-		std::string _str_file_name = "day_data_by_symbol1600036.dat.zip";
-		g_algo_data_fix_.push_file_download_queue(_thread_id, "day_data_by_symbol", _str_file_name);
-		g_algo_data_fix_.download_files(_thread_id);
-	}
+	std::string _str_file_name = data_type + std::to_string(_exchange) + _symbol + ".dat.zip";
+	g_algo_data_fix_.push_file_download_queue(fix_thread_id, data_type, _str_file_name);
+	g_algo_data_fix_.download_files(fix_thread_id);
 }
 
 CString GetModuleFilePath(HMODULE hModule)
@@ -168,11 +155,13 @@ int main()
 {
 	CBlueyeQuote blueye_quote_;
 	HANDLE _m_shutdown_event = CreateEvent(NULL, TRUE, FALSE, "");
+	int fix_thread_id;
 
-	if (blueye_quote_.init_ex(_m_shutdown_event, "E7GH8ZH81E5T3Y6K86l0J3H6M9ML9JZH9HPH6B8H"))
+	if (blueye_quote_.init_ex(_m_shutdown_event, "E7GH8ZH81E5T3Y6K86l0J3H6M9ML9JZH9HPH6B8H") 
+		&& (fix_thread_id = p_this_instance_->start_fix("119.23.219.55", "6001", NULL, NULL)))
 	{
 		blueye_quote_.switch_window(NULL);
-		while (!blueye_quote_.is_login())
+		while (!blueye_quote_.is_login() || !g_algo_data_fix_.is_login(fix_thread_id))
 		{
 			Sleep(1000);
 		}
@@ -182,6 +171,7 @@ int main()
 		//request_daily_data(&blueye_quote_, SHA, (char *)"600200");
 		//request_tick_data(&blueye_quote_, SHA, (char *)"600036");
 		//request_batch_data(&blueye_quote_); //批量下载股票
+		request_fix_data(fix_thread_id, SHA, "600036", "w1m_data_by_symbol");
 		while (1)
 		{
 			Sleep(10000);

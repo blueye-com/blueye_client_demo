@@ -5,7 +5,6 @@ CBlueyeQuoteFile *p_this_instance_ = new CBlueyeQuoteFile;
 data_fix	g_algo_data_fix_;
 blueye_ipfs g_algo_blueye_ipfs_;
 
-
 int CBlueyeQuoteFile::start_fix(std::string _str_ip, std::string _str_port, HWND _hwnd, int _msg)
 {
 	int _thread_id = g_algo_data_fix_.create_fix(_str_ip, _str_port, "9999", CBlueyeQuoteFile::my_fix_call_back, CBlueyeQuoteFile::my_fix_log);
@@ -35,19 +34,11 @@ void CBlueyeQuoteFile::my_fix_call_back(int _thread_id, std::string _str_msg_typ
 	{
 		if ( _str_json.find("w1m_data_by_symbol") != std::string::npos)
 		{
-			/*if (_str_json.find(SYSTEM_ALGO_USER_ID) != std::string::npos)
-			{
-				::PostMessage(p_this_instance_->h_wnd_notification_, p_this_instance_->msg_, MSG_FROM_SYS_ALGO, NULL);
-				if (p_this_instance_->str_sys_acc_id_ != p_this_instance_->str_my_acc_id_)
-					p_this_instance_->async_download_algo_related_files(p_this_instance_->str_my_acc_id_);
-				p_this_instance_->async_download_file("algo", "algo_list.txt");
-			}*/
-			//else
-			//	::PostMessage(p_this_instance_->h_wnd_notification_, p_this_instance_->msg_, MSG_FROM_USER_ALGO, NULL);
+			
 		}
 		else if ( _str_json.find("w3m_data_by_symbol") != std::string::npos)
 		{
-			//::PostMessage(p_this_instance_->h_wnd_notification_, p_this_instance_->msg_, MSG_FROM_USER_ALGO, NULL);
+			
 		}
 		else if ( _str_json.find("w5m_data_by_symbol") != std::string::npos)
 		{

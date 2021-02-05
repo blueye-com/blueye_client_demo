@@ -1,0 +1,16 @@
+﻿  CBlueyeQuote.cpp
+  _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+c:\users\t530\downloads\blueye_client_demo-master\blueye_client_demo\blueye_client_demo\blueye_client_common.h(142): warning C4091: “typedef ”: 没有声明变量时忽略“ROM_TINY_KLINE_DATA”的左侧
+c:\users\t530\downloads\blueye_client_demo-master\blueye_client_demo\blueye_client_demo\cblueyequote.cpp(64): warning C4101: “_rom_quote”: 未引用的局部变量
+c:\users\t530\downloads\blueye_client_demo-master\blueye_client_demo\blueye_client_demo\cblueyequote.cpp(279): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\t530\downloads\blueye_client_demo-master\blueye_client_demo\blueye_client_demo\cblueyequote.cpp(285): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\t530\downloads\blueye_client_demo-master\blueye_client_demo\blueye_client_demo\cblueyequote.cpp(298): warning C4018: “<”: 有符号/无符号不匹配
+  blueye_client_demo.cpp
+  _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+c:\users\t530\downloads\blueye_client_demo-master\blueye_client_demo\blueye_client_demo\blueye_client_common.h(142): warning C4091: “typedef ”: 没有声明变量时忽略“ROM_TINY_KLINE_DATA”的左侧
+c:\users\t530\downloads\blueye_client_demo-master\blueye_client_demo\blueye_client_demo\blueye_fix_api.h(22): warning C4068: 未知的杂注
+c:\users\t530\downloads\blueye_client_demo-master\blueye_client_demo\blueye_client_demo\blueye_fix_api.h(457): warning C4068: 未知的杂注
+c:\users\t530\downloads\blueye_client_demo-master\blueye_client_demo\blueye_client_demo\data_fix.h(4): warning C4068: 未知的杂注
+c:\users\t530\downloads\blueye_client_demo-master\blueye_client_demo\blueye_client_demo\data_fix.h(88): warning C4068: 未知的杂注
+  正在生成代码...
+  blueye_client_demo.vcxproj -> C:\Users\T530\Downloads\blueye_client_demo-master\blueye_client_demo\Debug\blueye_client_demo.exe

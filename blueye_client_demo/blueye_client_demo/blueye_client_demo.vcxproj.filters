@@ -36,6 +36,12 @@
     <ClCompile Include="ZipData.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="DataExchange.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ManyMinutesDataConversion.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CBlueyeQuote.h">
@@ -60,6 +66,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ZipData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DataExchange.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ManyMinutesDataConversion.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -100,7 +100,13 @@ public:
 
 	std::string get_content_path_by_type(std::string _str_content_type)
 	{
-		if(strstr(_str_content_type.c_str(),(char*)".zip")) return file_root_path_  +  "day_data_by_symbol";
+		if(strstr(_str_content_type.c_str(),(char*)"day")) return file_root_path_  +  "day_data_by_symbol";
+		else if (strstr(_str_content_type.c_str(), (char*)"w1m")) return file_root_path_ + "w1m_data_by_symbol";
+		else if (strstr(_str_content_type.c_str(), (char*)"w5m")) return file_root_path_ + "w5m_data_by_symbol";
+		else if (strstr(_str_content_type.c_str(), (char*)"w10m")) return file_root_path_ + "w10m_data_by_symbol";
+		else if (strstr(_str_content_type.c_str(), (char*)"w15m")) return file_root_path_ + "w15m_data_by_symbol";
+		else if (strstr(_str_content_type.c_str(), (char*)"w30m")) return file_root_path_ + "w30m_data_by_symbol";
+		else if (strstr(_str_content_type.c_str(), (char*)"w60m")) return file_root_path_ + "w60m_data_by_symbol";
 	}
 	tag_CONTENT_INDEX * get_content_index(std::string _str_content_type, std::string _str_content_name)
 	{
