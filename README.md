@@ -377,28 +377,19 @@ void request_batch_data(CBlueyeQuote *_p_blueye_quote)
 说明：  
 A, 通过调用CBlueyeQuote类提供的send_batch_business接口实现行情数据请求的批量发送。  
 B, 行情头的reset函数可设置请求的行情数据类型及token密钥，通过设置行情头的t1变量可获取不同的分时数据。  
-# 9.CBlueyeQuote接口API  
-//日志回调函数  
+# 9.分钟数据转换接口API  
 ```cpp
-	static void log(std::string _str_log);  
+void ManyMinutesDataConversion(int rec_count,int exchange , std::string symbol, ROM_KLINE_DATA* kline,ROM_KLINE_DATA* outcome_kine,int expected_type)
 ```
-可对该函数进行修改，用于保存相关日志信息  
+**rec_count**:转化的记录条数  
+**exchange**:交易所代码  
+**symbol**:股票代码  
+**kline**:原始数据  
+**outcome_kline**:经过转化的数据  
+**expected_type**:转化的数据类型：  
 
-//配置函数  
-```cpp
-	void read_config_from_file();  
-```
-从ini文件中读取相关的配置信息，如版本号、订阅信息、ip、端口等，并将其保存于config_param_中  
-
-//该函数负责切换窗口句柄，并清除行情队列   
-```cpp
-	void switch_window(HWND _h_wnd);    
-```
- //该函数负责对实时行情订阅请求进行打包处理    
-```cpp
-	void pack_subscribe(std::vector<STRU_SYMBOL> &_symbols);  
-```
-//将行情信息送入发送队列    
-```cpp
-	void send_business(ROM_QUOTE_HEAD *_p_quote_head);  
-```
+#define KLINE_TYPE_MINUTE1_DATA                                  1                                                //1分钟K线  
+#define KLINE_TYPE_MINUTE5_DATA                                  5                                                //5分钟K线  
+#define KLINE_TYPE_MINUTE15_DATA                                15                                                //15分钟K线  
+#define KLINE_TYPE_MINUTE30_DATA                                30                                                //30分钟K线  
+#define KLINE_TYPE_MINUTE60_DATA                                60                                                //60分钟K线  
