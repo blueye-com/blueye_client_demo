@@ -80,13 +80,13 @@ typedef struct tagRCV_REPORT_STRUCTEx
 ```cpp
 typedef struct ROM_TINY_KLINE_DATA
 {
-	__time32_t		t;					//time stamp of a record.
-	short		iDOpen;				//difference value from close.
-	short		iDHigh;				//difference value from close.
-	short		iDLow;				//difference value from close.
-	int			iClose;				//real close price.
-	LONGLONG	llVolume;			//real volume value.
-	LONGLONG	iDAmount;			//real_amount
+	__time32_t		t;					//时间戳/time stamp of a record.
+	short		iDOpen;				//开盘价/与昨日收盘价的差值/difference value from close.
+	short		iDHigh;				//最高价/difference value from close.
+	short		iDLow;				//最低价/difference value from close.
+	int			iClose;			//收盘价/real close price.
+	LONGLONG	llVolume;			//成交量/real volume value.
+	LONGLONG	iDAmount;			//成交数/real_amount
 	LONGLONG	iDVBAll;			//
 	LONGLONG	iDVSAll;			//
 };
@@ -95,14 +95,14 @@ typedef struct ROM_TINY_KLINE_DATA
 ```cpp
 typedef struct
 {
-	int date;
-	int time;
-	LONGLONG amount;
-	LONGLONG volume;
-	int openprice;
-	int closeprice;
-	int highprice;
-	int lowprice;
+	int date;//日期
+	int time;//时间
+	LONGLONG amount;//成交数
+	LONGLONG volume;//成交量
+	int openprice;//开盘价
+	int closeprice;//收盘价
+	int highprice;//最高价
+	int lowprice;//最低价
 }ROM_KLINE_DATA;
 ```
 ## 2.4 明细数据
@@ -111,7 +111,7 @@ typedef struct
 typedef struct
 {
 	int		time;
-	short	iDPrice;
+	short		iDPrice;
 	int		iDVolume;
 }ROM_TICK_DATA;
 
