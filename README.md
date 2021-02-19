@@ -458,11 +458,11 @@ void ManyMinutesDataConversion(int rec_count,int exchange , std::string symbol, 
 ```
 示例为向fix服务器请求股票代码为600036的5分钟K线数据，启动fix服务后调用request_fix_data向服务器请求指定数据，在回调函数中可对返回的数据进行解压及其他处理
 ```cpp
-	if ( _str_json.find("w1m_data_by_symbol") != std::string::npos)
+	if ( _str_json.find("w5m_data_by_symbol") != std::string::npos)
 	{
 		int npos = _str_json.find(".zip");
 		std::string _file_name = _str_json.substr(0, npos);
-		std::string _fix_download_file_name = ipfs.file_root_path_ + "w1m_data_by_symbol" + "\\" + _file_name;
+		std::string _fix_download_file_name = ipfs.file_root_path_ + "w5m_data_by_symbol" + "\\" + _file_name;
 		FILE* _fp = fopen(_fix_download_file_name.c_str(), "rb+");
 		fseek(_fp, 0, SEEK_END);
 		int _file_len = ftell(_fp);
