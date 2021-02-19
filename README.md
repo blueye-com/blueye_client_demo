@@ -272,7 +272,7 @@ void CBlueyeQuote::blueye_call_back(CALL_BACK_DATA *_blueye_data, int _rec_count
 	}
 }
 ```
-# 6.fix协议接口
+# 5.fix协议接口
 ```cpp
 void request_fix_data(int fix_thread_id, byte exchange, std::string symbol,std::string data_type)
 {
@@ -286,7 +286,7 @@ void request_fix_data(int fix_thread_id, byte exchange, std::string symbol,std::
 **symbol**:股票代码
 **data_type**:获取数据类型  
 
-# 5.实时行情接口API
+# 6.实时行情接口API
 ```cpp
 void subscribe_live_quote(CBlueyeQuote *_p_blueye_quote)
 {
@@ -307,7 +307,7 @@ void subscribe_live_quote(CBlueyeQuote *_p_blueye_quote)
 A, 根据此接口订阅指定的数据，最大支持100个品种。如果需要定制全市场推送，则需要通过特定的token账号来申请。
 B,如果取消订阅，则发送一个不存在的字符，例如“BSDFSDF”。
 C,收到的推送数据会通过回调函数blueye_call_back发送到上层。
-# 6.K线数据点播下载
+# 7.K线数据点播下载
 ```cpp
 void request_1m_data(CBlueyeQuote *_p_blueye_quote,byte _exchange,char *_symbol)
 {
@@ -337,7 +337,7 @@ void request_daily_data(CBlueyeQuote *_p_blueye_quote, byte _exchange, char *_sy
 说明：  
 A, 收到数据会系统会调用回调函数blueye_call_back将数据传入，用户通过修改回调函数体处理数据。
 B, 目前支持日内1分钟和日K两类数据的下载，其余数据可以调用FIX接口通过文件方式下载，或者通过1分钟和日K数据在本地合成其他格式的数据。
-# 7.明细数据点播下载  
+# 8.明细数据点播下载  
 ```cpp
 void request_tick_data(CBlueyeQuote *_p_blueye_quote, byte _exchange, char *_symbol)
 {
@@ -354,7 +354,7 @@ void request_tick_data(CBlueyeQuote *_p_blueye_quote, byte _exchange, char *_sym
 说明：  
 A, 收到数据会系统会调用K线回调函数blueye_call_back将数据传入，用户通过修改回调函数体处理数据。
 B, 如果一个品种的请求数据条数大于最大限制条数（1024），则会以多包的形式返回数据。最后通过时间序号进行排序合并。
-# 8.批量数据下载接口API
+# 9.批量数据下载接口API
 ```cpp
 void request_batch_data(CBlueyeQuote *_p_blueye_quote)
 {
@@ -391,7 +391,7 @@ void request_batch_data(CBlueyeQuote *_p_blueye_quote)
 说明：  
 A, 通过调用CBlueyeQuote类提供的send_batch_business接口实现行情数据请求的批量发送。  
 B, 行情头的reset函数可设置请求的行情数据类型及token密钥，通过设置行情头的t1变量可获取不同的分时数据。  
-# 9.分钟数据转换接口API  
+# 10.分钟数据转换接口API  
 ```cpp
 void ManyMinutesDataConversion(int rec_count,int exchange , std::string symbol, ROM_KLINE_DATA* kline,ROM_KLINE_DATA* outcome_kine,int expected_type)
 ```
