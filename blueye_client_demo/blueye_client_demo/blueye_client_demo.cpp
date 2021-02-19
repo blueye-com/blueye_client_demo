@@ -171,7 +171,7 @@ int main()
 		//request_daily_data(&blueye_quote_, SHA, (char *)"600200");
 		//request_tick_data(&blueye_quote_, SHA, (char *)"600036");
 		//request_batch_data(&blueye_quote_); //批量下载股票
-		request_fix_data(fix_thread_id, SHA, "600036", "w1m_data_by_symbol");
+		request_fix_data(fix_thread_id, SHA, "600036", "w5m_data_by_symbol");
 		while (1)
 		{
 			Sleep(10000);
