@@ -280,6 +280,13 @@ void request_fix_data(int fix_thread_id, byte exchange, std::string symbol,std::
 	g_algo_data_fix_.push_file_download_queue(fix_thread_id, data_type, _str_file_name);
 	g_algo_data_fix_.download_files(fix_thread_id);
 }
+request_fix_data(fix_thread_id, SHA, "600036", "w1m_data_by_symbol");
+//request_fix_data(fix_thread_id, SHA, "600036", "w3m_data_by_symbol");
+//request_fix_data(fix_thread_id, SHA, "600036", "w5m_data_by_symbol");
+//request_fix_data(fix_thread_id, SHA, "600036", "w10m_data_by_symbol");
+//request_fix_data(fix_thread_id, SHA, "600036", "w15m_data_by_symbol");
+//request_fix_data(fix_thread_id, SHA, "600036", "w30m_data_by_symbol");
+//request_fix_data(fix_thread_id, SHA, "600036", "w60m_data_by_symbol");
 ```
 **fix_thread_id**:fix线程id  
 **exchange**:交易所代码  
