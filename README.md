@@ -85,8 +85,8 @@ typedef struct ROM_TINY_KLINE_DATA
 	short		iDHigh;				//最高价/difference value from close.
 	short		iDLow;				//最低价/difference value from close.
 	int			iClose;			//收盘价/real close price.
-	LONGLONG	llVolume;			//成交量/real volume value.
-	LONGLONG	iDAmount;			//成交数/real_amount
+	LONGLONG	llVolume;			//成交额/real volume value.
+	LONGLONG	iDAmount;			//成交量/real_amount
 	LONGLONG	iDVBAll;			//
 	LONGLONG	iDVSAll;			//
 };
@@ -97,8 +97,8 @@ typedef struct
 {
 	int date;//日期
 	int time;//时间
-	LONGLONG amount;//成交数
-	LONGLONG volume;//成交量
+	LONGLONG amount;//成交量
+	LONGLONG volume;//成交额
 	int openprice;//开盘价
 	int closeprice;//收盘价
 	int highprice;//最高价
