@@ -272,7 +272,7 @@ void CBlueyeQuote::blueye_call_back(CALL_BACK_DATA *_blueye_data, int _rec_count
 	}
 }
 ```
-# 5.fix协议接口
+# 5.fix协议接口（历史多分钟K线数据下载）
 ```cpp
 void request_fix_data(int fix_thread_id, byte exchange, std::string symbol,std::string data_type)
 {
@@ -284,8 +284,9 @@ void request_fix_data(int fix_thread_id, byte exchange, std::string symbol,std::
 **fix_thread_id**:fix线程id  
 **exchange**:交易所代码  
 **symbol**:股票代码  
-**data_type**:获取数据类型    
+**data_type**:获取数据类型  如获取5分钟K线数据："w1m_data_by_symbol"
 **基于文件方式的方式下载，支持大文件下载，传输使用 FIX 的扩展文件协议， 典型的数据类型包括：除权数据、财务数据、资金数据、K 线数据（大于 512 条，按品种、 按日期下载）、交易明细（大于 1024 条，按品种、按日期下载）**
+
 # 6.实时行情接口API
 ```cpp
 void subscribe_live_quote(CBlueyeQuote *_p_blueye_quote)
