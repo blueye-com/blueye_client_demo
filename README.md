@@ -272,6 +272,20 @@ void CBlueyeQuote::blueye_call_back(CALL_BACK_DATA *_blueye_data, int _rec_count
 	}
 }
 ```
+# 6.fix协议接口
+```cpp
+void request_fix_data(int fix_thread_id, byte exchange, std::string symbol,std::string data_type)
+{
+	std::string _str_file_name = data_type + std::to_string(_exchange) + _symbol + ".dat.zip";
+	g_algo_data_fix_.push_file_download_queue(fix_thread_id, data_type, _str_file_name);
+	g_algo_data_fix_.download_files(fix_thread_id);
+}
+```
+**fix_thread_id**:fix线程id
+**exchange**:交易所代码
+**symbol**:股票代码
+**data_type**:获取数据类型  
+
 # 5.实时行情接口API
 ```cpp
 void subscribe_live_quote(CBlueyeQuote *_p_blueye_quote)
