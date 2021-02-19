@@ -415,3 +415,69 @@ void ManyMinutesDataConversion(int rec_count,int exchange , std::string symbol, 
 #define KLINE_TYPE_MINUTE15_DATA                                15                                                //15分钟K线  
 #define KLINE_TYPE_MINUTE30_DATA                                30                                                //30分钟K线  
 #define KLINE_TYPE_MINUTE60_DATA                                60                                                //60分钟K线  
+# 行情接口调用示例
+```cpp
+	CBlueyeQuote blueye_quote_;
+	HANDLE _m_shutdown_event = CreateEvent(NULL, TRUE, FALSE, "");
+	int fix_thread_id;
+
+	if (blueye_quote_.init_ex(_m_shutdown_event, "E7GH8ZH81E5T3Y6K86l0J3H6M9ML9JZH9HPH6B8H") 
+		&& (fix_thread_id = p_this_instance_->start_fix("119.23.219.55", "6001", NULL, NULL)))
+	{
+		blueye_quote_.switch_window(NULL);
+		while (!blueye_quote_.is_login() || !g_algo_data_fix_.is_login(fix_thread_id))
+		{
+			Sleep(1000);
+		}
+	
+		//subscribe_live_quote(&blueye_quote_);
+		//request_1m_data(&blueye_quote_, SHA, (char *)"600036");
+		//request_daily_data(&blueye_quote_, SHA, (char *)"600200");
+		//request_tick_data(&blueye_quote_, SHA, (char *)"600036");
+		//request_batch_data(&blueye_quote_); //批量下载股票
+		
+		//request_fix_data(fix_thread_id, SHA, "600036", "w1m_data_by_symbol");
+		//request_fix_data(fix_thread_id, SHA, "600036", "w3m_data_by_symbol");
+		request_fix_data(fix_thread_id, SHA, "600036", "w5m_data_by_symbol");
+		//request_fix_data(fix_thread_id, SHA, "600036", "w10m_data_by_symbol");
+		//request_fix_data(fix_thread_id, SHA, "600036", "w15m_data_by_symbol");
+		//request_fix_data(fix_thread_id, SHA, "600036", "w30m_data_by_symbol");
+		//request_fix_data(fix_thread_id, SHA, "600036", "w60m_data_by_symbol");
+		
+		while (1)
+		{
+			Sleep(10000);
+		}
+	}
+	else
+	{
+		std::cout << "Failed in blueye_quote_.init_ex" << std::endl;
+	}
+	return 0;
+
+```
+示例为向fix服务器请求股票代码为600036的5分钟K线数据，启动fix服务后调用request_fix_data向服务器请求指定数据，在回调函数中可对返回的数据进行解压及其他处理
+```cpp
+	if ( _str_json.find("w1m_data_by_symbol") != std::string::npos)
+	{
+		int npos = _str_json.find(".zip");
+		std::string _file_name = _str_json.substr(0, npos);
+		std::string _fix_download_file_name = ipfs.file_root_path_ + "w1m_data_by_symbol" + "\\" + _file_name;
+		FILE* _fp = fopen(_fix_download_file_name.c_str(), "rb+");
+		fseek(_fp, 0, SEEK_END);
+		int _file_len = ftell(_fp);
+		fseek(_fp, 0, SEEK_SET);
+		int _rec_count = _file_len / sizeof(ROM_KLINE_DATA);
+		if (_file_len % sizeof(ROM_KLINE_DATA) == 0)
+		{
+			for (int i = 0; i < _rec_count; i++)
+			{
+				ROM_KLINE_DATA* _single_record = new ROM_KLINE_DATA;
+				fread(_single_record, 1, sizeof(ROM_KLINE_DATA), _fp);
+				std::cout << _single_record->volume << ","
+					<< _single_record->amount << std::endl;
+			}
+		}
+	}
+```
+示例中对返回的数据做了打印处理
